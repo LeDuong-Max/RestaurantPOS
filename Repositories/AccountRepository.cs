@@ -11,5 +11,10 @@ namespace Repositories
     public class AccountRepository : IAccountRepository
     {
         public Account? GetAccount(string username)=>AccountDAO.GetAccount(username);
+
+        public void UpdateAccount(Account account)
+        {
+            AccountDAO.UpdateAccount(account);
+        }
     }
 }

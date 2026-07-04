@@ -19,5 +19,10 @@ namespace Services
         {
             return iaccountRepository.GetAccount(username);
         }
+
+        public void UpdateAccount(Account account)
+        {
+            iaccountRepository.UpdateAccount(account);
+        }
     }
 }

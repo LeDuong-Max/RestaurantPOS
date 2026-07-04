@@ -16,4 +16,6 @@ public partial class Account
     public int Role { get; set; }
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+
+    public virtual Role RoleNavigation { get; set; } = null!;
 }

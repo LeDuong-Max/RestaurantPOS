@@ -44,6 +44,7 @@ namespace WPF
                 Account account = iAccountService.GetAccount(username);
                 if (account != null && account.Password != null && account.Password.Equals(password))
                 {
+                    AppSession.CurrentUser = account;
                     this.Hide();
                     MainWindow mainWindow = new MainWindow();
                     mainWindow.Show();
