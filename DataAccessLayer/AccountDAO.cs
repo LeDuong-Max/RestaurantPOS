@@ -1,10 +1,5 @@
 using BusinessObject;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
@@ -22,6 +17,13 @@ namespace DataAccessLayer
             using var db = new RestaurantPosContext();
             db.Accounts.Update(account);
             db.SaveChanges();
+        }
+        public static List<Account>? GetAllAccount()
+        {
+            using var db = new RestaurantPosContext();
+            return db.Accounts
+                     .Include(a => a.RoleNavigation)
+                     .ToList();
         }
     }
 }

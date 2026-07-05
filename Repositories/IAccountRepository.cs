@@ -1,9 +1,4 @@
 using BusinessObject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repositories
 {
@@ -11,5 +6,6 @@ namespace Repositories
     {
         public Account? GetAccount(string username);
         public void UpdateAccount(Account account);
+        public List<Account>? GetAllAccount();
     }
 }

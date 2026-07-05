@@ -65,3 +65,30 @@ CREATE TABLE OrderDetail (
     CONSTRAINT FK_Detail_Food FOREIGN KEY (FoodID) REFERENCES FoodItem(FoodID)
 );
 GO
+
+-- 1. Tạo bảng Role
+CREATE TABLE [dbo].[Role] (
+    [RoleID] INT PRIMARY KEY,
+    [RoleName] NVARCHAR(50) NOT NULL
+);
+
+-- 2. Thêm dữ liệu các chức danh vào bảng Role
+INSERT INTO [dbo].[Role] ([RoleID], [RoleName]) 
+VALUES 
+(1, N'Quản lí'), 
+(2, N'Nhân viên Thu ngân'), 
+(3, N'Nhân viên Phục vụ');
+
+-- 3. Nối Khóa ngoại từ bảng Account sang bảng Role
+-- (Do bảng Account của mày đang dùng cột tên là [Role] để lưu ID)
+ALTER TABLE [dbo].[Account] 
+ADD CONSTRAINT FK_Account_Role FOREIGN KEY ([Role]) REFERENCES [dbo].[Role]([RoleID]);
+
+-- Thêm cột Email (Cho phép NULL tạm thời để các tài khoản cũ không bị lỗi)
+ALTER TABLE [dbo].[Account]
+ADD [Email] NVARCHAR(100) NULL;
+
+-- Thêm cột Status để quản lý nhân viên còn làm hay đã nghỉ (1 là đang làm, 0 là đã nghỉ)
+-- Nếu mày có cột này rồi thì bỏ qua 2 dòng dưới nhé
+ALTER TABLE [dbo].[Account]
+ADD [Status] INT NOT NULL DEFAULT 1;

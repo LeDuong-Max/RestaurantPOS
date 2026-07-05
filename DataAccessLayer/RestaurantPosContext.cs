@@ -44,9 +44,11 @@ public partial class RestaurantPosContext : DbContext
             entity.HasIndex(e => e.Username, "UQ__Account__536C85E4C470F4F2").IsUnique();
 
             entity.Property(e => e.AccountId).HasColumnName("AccountID");
+            entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.FullName).HasMaxLength(100);
             entity.Property(e => e.Password).HasMaxLength(100);
             entity.Property(e => e.Role).HasDefaultValue(3);
+            entity.Property(e => e.Status).HasDefaultValue(1);
             entity.Property(e => e.Username).HasMaxLength(50);
 
             entity.HasOne(d => d.RoleNavigation).WithMany(p => p.Accounts)

@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
+﻿using System.Windows;
 namespace WPF
 {
     /// <summary>
@@ -31,6 +18,7 @@ namespace WPF
             txtUsername.Text = user.Username;
             txtFullName.Text = user.FullName;
             txtRole.Text = user.RoleNavigation?.RoleName ?? "Chưa xác định";
+            txtEmail.Text = user.Email;
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -42,6 +30,7 @@ namespace WPF
                 return;
             }
             user.FullName = txtFullName.Text.Trim();
+            user.Email = txtEmail.Text.Trim();
             if (!string.IsNullOrWhiteSpace(txtPassword.Password))
             {
                 user.Password = txtPassword.Password;

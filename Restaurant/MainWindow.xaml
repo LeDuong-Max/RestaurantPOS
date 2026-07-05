@@ -12,7 +12,13 @@
                 Width="120" Height="30" Margin="0,0,10,0" 
                 Click="btnProfile_Click" 
                 Background="#4CAF50" Foreground="White" FontWeight="Bold" />
-            <Button Name="btnLogout" Content="Đăng xuất" 
+
+            <Button Name="btnManagerAccount" Content="Quản lí tài khoản" 
+                Width="120" Height="30" Margin="0,0,10,0"
+                Click="btnManagerAccount_Click" 
+                Background="#2196F3" Foreground="White" FontWeight="Bold"/>
+            
+            <Button x:Name="btnLogout" Content="Đăng xuất" 
                 Width="100" Height="30" 
                 Click="btnLogout_Click" 
                 Background="#FF5722" Foreground="White" FontWeight="Bold"/>

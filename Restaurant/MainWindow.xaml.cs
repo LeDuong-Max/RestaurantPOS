@@ -1,13 +1,4 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using WPF;
 
 namespace Restaurant
@@ -27,13 +18,20 @@ namespace Restaurant
 
             if (user.Role == 1)
             {
-                // Quản lý: Hiển thị full chức năng (Không cần code gì thêm nếu XAML mặc định là hiện)
+                btnManagerAccount.Visibility = Visibility.Visible;
             }
-            else if (user.Role == 2)
+            else
             {
-                // Thu ngân: Chỗ này sau mày có nút nào cần giấu thì gọi tên nó ra. 
-                // Ví dụ: btnQuanLyNhanVien.Visibility = Visibility.Collapsed;
+                btnManagerAccount.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void btnManagerAccount_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerAccountWindow manageWindow = new ManagerAccountWindow();
+            manageWindow.Owner = this;
+            this.Hide();
+            manageWindow.ShowDialog();
         }
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)
