@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using WPF;
 
 namespace Restaurant
@@ -31,15 +31,15 @@ namespace Restaurant
             ManagerAccountWindow manageWindow = new ManagerAccountWindow();
             manageWindow.Owner = this;
             this.Hide();
-            manageWindow.ShowDialog();
+            manageWindow.Show();
         }
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)
         {
             ProfileWindow profileWin = new ProfileWindow();
             profileWin.Owner = this;
-            profileWin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            profileWin.ShowDialog();
+            this.Hide();
+            profileWin.Show();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)

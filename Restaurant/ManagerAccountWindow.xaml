@@ -62,11 +62,10 @@
 
                     <Button Name="btnDelete" Content="KHÓA / MỞ" Grid.Row="1" Grid.Column="0" Margin="0,5,5,0" Height="35" Background="#F44336" Foreground="White" FontWeight="Bold" Click="btnDelete_Click"/>
                     <Button Name="btnClear" Content="LÀM MỚI FORM" Grid.Row="1" Grid.Column="1" Margin="5,5,0,0" Height="35" Background="#9E9E9E" Foreground="White" FontWeight="Bold" Click="btnClear_Click"/>
-                    <Button Name="btnClose" Content="HỦY BỎ" Width="120" Height="40" 
+                    <Button x:Name="btnClose" Content="HỦY BỎ" Width="120" Height="40" 
                             Background="#757575" Foreground="White" FontWeight="Bold" FontSize="14"
-                            Click="btnClose_Click" Grid.ColumnSpan="2" Margin="115,62,125,-62" Grid.Row="1"/>   
+                            Click="btnClose_Click" Grid.ColumnSpan="2" Margin="120,40,120,-40" Grid.Row="1"/>
                 </Grid>
-
             </StackPanel>
         </GroupBox>
     </Grid>

@@ -1,9 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+
 namespace WPF
 {
-    /// <summary>
-    /// Interaction logic for UserInformationWindow.xaml
-    /// </summary>
     public partial class ProfileWindow : Window
     {
         public ProfileWindow()
@@ -51,6 +50,13 @@ namespace WPF
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            if (this.Owner != null)
+            {
+                this.Owner.Show();
+            }
         }
     }
 }

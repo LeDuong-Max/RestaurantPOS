@@ -30,7 +30,7 @@ namespace WPF
                 }
 
                 Account account = iAccountService.GetAccount(username);
-                if (account != null && account.Password != null && account.Password.Equals(password))
+                if (account != null && account.Password != null && account.Password.Equals(password)&&account.Status==1)
                 {
                     AppSession.CurrentUser = account;
                     this.Hide();
@@ -39,7 +39,11 @@ namespace WPF
                 }
                 else
                 {
-                    MessageBox.Show("Sai tài khoản hoặc mật khẩu.");
+                    if (account.Status == 0)
+                    {
+                        MessageBox.Show("Bạn không còn quyền đăng nhập!");
+                    }
+                    else MessageBox.Show("Sai tài khoản hoặc mật khẩu.");
                 }
             }
             catch (Exception ex)

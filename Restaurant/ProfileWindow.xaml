@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="ProfileWindow" Height="520" Width="800"
-        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+        Title="Thông Tin Cá Nhân" Height="520" Width="800"
+        WindowStartupLocation="CenterOwner" 
+        Closed="Window_Closed">
     <Grid Margin="30">
         <StackPanel>
             <TextBlock Text="👤 THÔNG TIN HỒ SƠ" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,25" Foreground="#007ACC"/>
