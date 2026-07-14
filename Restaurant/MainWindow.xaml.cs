@@ -19,10 +19,12 @@ namespace Restaurant
             if (user.Role == 1)
             {
                 btnManagerAccount.Visibility = Visibility.Visible;
+                btnDiningTable.Visibility = Visibility.Visible;
             }
             else
             {
                 btnManagerAccount.Visibility = Visibility.Collapsed;
+                btnDiningTable.Visibility= Visibility.Collapsed;
             }
         }
 
@@ -48,6 +50,13 @@ namespace Restaurant
             Login loginWindow = new Login();
             loginWindow.Show();
             this.Close();
+        }
+        private void btnDiningTable_Click(object sender, RoutedEventArgs e)
+        {
+            DiningTableWindow diningTableWindow = new DiningTableWindow();
+            diningTableWindow.Owner = this;
+            this.Hide();
+            diningTableWindow.Show();
         }
     }
 }

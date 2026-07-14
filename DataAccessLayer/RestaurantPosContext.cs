@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using BusinessObject;
 
-namespace BusinessObject;
+namespace DataAccessLayer;
 
 public partial class RestaurantPosContext : DbContext
 {

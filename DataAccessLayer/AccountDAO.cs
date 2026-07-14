@@ -25,5 +25,16 @@ namespace DataAccessLayer
                      .Include(a => a.RoleNavigation)
                      .ToList();
         }
+        public static void CreateAccount(Account newAccount)
+        {
+            using var db = new RestaurantPosContext();
+            db.Accounts.Add(newAccount);
+            db.SaveChanges();
+        }
+        public static bool CheckUsernameExists(string username)
+        {
+            using var db = new RestaurantPosContext();
+            return db.Accounts.Any(a => a.Username.ToLower() == username.ToLower());
+        }
     }
 }
