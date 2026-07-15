@@ -11,5 +11,6 @@ namespace Repositories
     {
         public List<FoodItem> ShowAllFoodItem();
         public List<FoodItem> FilterFoodItem(int categoryId);
+        public FoodItem GetFoodById(int foodID);
     }
 }

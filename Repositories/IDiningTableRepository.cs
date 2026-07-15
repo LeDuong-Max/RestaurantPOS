@@ -10,5 +10,6 @@ namespace Repositories
     public interface IDiningTableRepository
     {
         public List<DiningTable> GetAllDiningTable();
+        public void UpdateStatus(int tableID, int status);
     }
 }

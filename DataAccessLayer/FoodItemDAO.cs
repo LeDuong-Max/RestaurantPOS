@@ -20,5 +20,10 @@ namespace DataAccessLayer
             using var db = new RestaurantPosContext();
             return db.FoodItems.Where(a=>a.CategoryId == categoryId).ToList();
         }
+        public static FoodItem GetFoodById(int foodId)
+        {
+            using var db = new RestaurantPosContext();
+            return db.FoodItems.FirstOrDefault(f => f.FoodId == foodId);
+        }
     }
 }

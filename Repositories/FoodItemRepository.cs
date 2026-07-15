@@ -14,7 +14,10 @@ namespace Repositories
         {
             return FoodItemDAO.FilterFoodIitem(categoryId);
         }
-
+        public FoodItem GetFoodById(int foodID)
+        {
+            return FoodItemDAO.GetFoodById(foodID);
+        }
         public List<FoodItem> ShowAllFoodItem()
         {
             return FoodItemDAO.ShowAllFoodItem();

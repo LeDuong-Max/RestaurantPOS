@@ -33,9 +33,10 @@ namespace WPF
                 if (account != null && account.Password != null && account.Password.Equals(password) && account.Status == 1)
                 {
                     AppSession.CurrentUser = account;
-                    this.Hide();
                     MainWindow mainWindow = new MainWindow();
+                    Application.Current.MainWindow = mainWindow;
                     mainWindow.Show();
+                    this.Close();
                 }
                 else
                 {

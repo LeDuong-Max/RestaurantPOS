@@ -14,5 +14,15 @@ namespace DataAccessLayer
             using var db = new RestaurantPosContext();
             return db.DiningTables.ToList();
         }
+        public static void UpdateStatus(int tableID,int status)
+        {
+            using var db = new RestaurantPosContext();
+            var table = db.DiningTables.SingleOrDefault(a=>a.TableId == tableID);
+            if (table != null)
+            {
+                table.Status = status;
+                db.SaveChanges();
+            }
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace Services
     public interface IDiningTableService
     {
         List<DiningTable>? GetAllDiningTable();
+        void UpdateStatus(int tableID, int status);
     }
 }

@@ -19,5 +19,10 @@ namespace Services
         {
             return diningTableRepository.GetAllDiningTable();
         }
+
+        public void UpdateStatus(int tableID, int status)
+        {
+            diningTableRepository.UpdateStatus(tableID, status);
+        }
     }
 }

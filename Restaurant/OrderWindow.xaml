@@ -27,7 +27,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock x:Name="txtTableName" Text="Hóa đơn -  ..." FontSize="22" FontWeight="Bold" Foreground="#333" Margin="0,0,0,15"/>
+                <TextBlock x:Name="txtTableName" Text="Hóa đơn -  ..." FontSize="22" FontWeight="Bold" Foreground="#333" Margin="0,0,0,15" Height="29" VerticalAlignment="Bottom"/>
 
                 <!-- Bảng hiển thị các món khách đã gọi -->
                 <DataGrid x:Name="dgOrderDetails" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" 
@@ -36,7 +36,7 @@
                         <DataGridTextColumn Header="Tên món" Width="*" Binding="{Binding FoodName}"/>
                         <DataGridTextColumn Header="SL" Width="50" Binding="{Binding Quantity}"/>
                         <DataGridTextColumn Header="Đơn giá" Width="80" Binding="{Binding UnitPrice}"/>
-                        <DataGridTextColumn Header="Thành tiền" Width="90" Binding="{Binding Total}"/>
+                        <DataGridTextColumn Header="Thành tiền" Width="90" Binding="{Binding TotalPrice}"/>
                     </DataGrid.Columns>
                 </DataGrid>
 
@@ -48,7 +48,7 @@
                         <TextBlock x:Name="txtTotalPrice" Text="0 VNĐ" FontSize="18" FontWeight="Bold" Foreground="#E53935"/>
                     </StackPanel>
 
-                    <Button x:Name="btnCheckout" Content="THANH TOÁN" Height="45" Background="#4CAF50" Foreground="White" FontSize="16" FontWeight="Bold" BorderThickness="0" Click="btnCheckout_Click">
+                    <Button x:Name="btnPayment" Content="THANH TOÁN" Height="45" Background="#4CAF50" Foreground="White" FontSize="16" FontWeight="Bold" BorderThickness="0" Click="btnPayment_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>

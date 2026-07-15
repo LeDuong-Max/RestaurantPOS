@@ -20,7 +20,10 @@ namespace Services
         {
             return foodItemRepository.FilterFoodItem(categoryId);
         }
-
+        public FoodItem GetFoodById(int foodID)
+        {
+            return foodItemRepository.GetFoodById(foodID);
+        }
         public List<FoodItem> ShowAllFoodItem()
         {
             return foodItemRepository.ShowAllFoodItem();
