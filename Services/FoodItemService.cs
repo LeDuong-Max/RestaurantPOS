@@ -1,4 +1,7 @@
-﻿using BusinessObject;
+using BusinessObject;
+using Repositories;
+using System.Collections.Generic;
+using BusinessObject;
 using Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,23 +13,34 @@ namespace Services
 {
     public class FoodItemService : IFoodItemService
     {
-        private readonly FoodItemRepository foodItemRepository;
+        private IFoodItemRepository repository;
+
         public FoodItemService()
         {
-            foodItemRepository = new FoodItemRepository();
+            repository = new FoodItemRepository();
         }
+
+        public List<FoodItem> GetFoodItems() => repository.GetFoodItems();
+
+        public FoodItem GetFoodItemByID(int id) => repository.GetFoodItemByID(id);
+
+        public void AddFoodItem(FoodItem foodItem) => repository.AddFoodItem(foodItem);
+
+        public void UpdateFoodItem(FoodItem foodItem) => repository.UpdateFoodItem(foodItem);
+
+        public void DeleteFoodItem(int id) => repository.DeleteFoodItem(id);
 
         public List<FoodItem> FilterFoodIitem(int categoryId)
         {
-            return foodItemRepository.FilterFoodItem(categoryId);
+            return repository.FilterFoodItem(categoryId);
         }
         public FoodItem GetFoodById(int foodID)
         {
-            return foodItemRepository.GetFoodById(foodID);
+            return repository.GetFoodById(foodID);
         }
         public List<FoodItem> ShowAllFoodItem()
         {
-            return foodItemRepository.ShowAllFoodItem();
+            return repository.ShowAllFoodItem();
         }
     }
 }

@@ -1,8 +1,20 @@
+using System.Text;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using WPF;
 
 namespace Restaurant
 {
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -19,13 +31,40 @@ namespace Restaurant
             if (user.Role == 1)
             {
                 btnManagerAccount.Visibility = Visibility.Visible;
-                btnDiningTable.Visibility = Visibility.Visible;
             }
             else
             {
                 btnManagerAccount.Visibility = Visibility.Collapsed;
-                btnDiningTable.Visibility= Visibility.Collapsed;
             }
+        }
+
+        private void btnSales_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Tính năng Bán Hàng (Module 1) đang được phát triển!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void btnFoodItems_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide(); // Ẩn trang chủ đi
+            FoodItemWindow foodWindow = new FoodItemWindow();
+            foodWindow.ShowDialog();
+            this.Show(); // Hiện lại trang chủ khi đóng cửa sổ con
+        }
+
+        private void btnDiningTables_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            DiningTableWindow tableWindow = new DiningTableWindow();
+            tableWindow.ShowDialog();
+            this.Show();
+        }
+
+        private void btnReports_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            ReportWindow reportWindow = new ReportWindow();
+            reportWindow.ShowDialog();
+            this.Show();
         }
 
         private void btnManagerAccount_Click(object sender, RoutedEventArgs e)
@@ -34,6 +73,7 @@ namespace Restaurant
             manageWindow.Owner = this;
             this.Hide();
             manageWindow.Show();
+            this.Show();
         }
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)
@@ -42,21 +82,15 @@ namespace Restaurant
             profileWin.Owner = this;
             this.Hide();
             profileWin.Show();
+            this.Show();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             AppSession.CurrentUser = null;
-            Login loginWindow = new Login();
+            Login loginWindow = new Login(); 
             loginWindow.Show();
             this.Close();
-        }
-        private void btnDiningTable_Click(object sender, RoutedEventArgs e)
-        {
-            DiningTableWindow diningTableWindow = new DiningTableWindow();
-            diningTableWindow.Owner = this;
-            this.Hide();
-            diningTableWindow.Show();
         }
     }
 }

@@ -1,17 +1,17 @@
 using BusinessObject;
 using System.Collections.Generic;
 
-namespace Services
+namespace Repositories
 {
-    public interface IFoodItemService
+    public interface IFoodItemRepository
     {
         List<FoodItem> GetFoodItems();
         FoodItem GetFoodItemByID(int id);
         void AddFoodItem(FoodItem foodItem);
         void UpdateFoodItem(FoodItem foodItem);
         void DeleteFoodItem(int id);
-        List<FoodItem> ShowAllFoodItem();
-        List<FoodItem> FilterFoodIitem(int categoryId);
+        List<FoodItem> FilterFoodItem(int categoryId);
         FoodItem GetFoodById(int foodID);
+        List<FoodItem> ShowAllFoodItem();
     }
 }

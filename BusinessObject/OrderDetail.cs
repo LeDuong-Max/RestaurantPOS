@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace BusinessObject;
@@ -14,6 +14,8 @@ public partial class OrderDetail
     public int Quantity { get; set; }
 
     public decimal UnitPrice { get; set; }
+
+    public string? Notes { get; set; }
 
     public virtual FoodItem Food { get; set; } = null!;
 

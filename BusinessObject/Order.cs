@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace BusinessObject;
@@ -14,6 +14,10 @@ public partial class Order
     public DateTime OrderDate { get; set; }
 
     public decimal? TotalPrice { get; set; }
+
+    public DateTime? CheckoutDate { get; set; }
+    
+    public decimal Discount { get; set; }
 
     public int Status { get; set; }
 

@@ -2,6 +2,6 @@
   <Project Path="BusinessObject/BusinessObject.csproj" />
   <Project Path="DataAccessLayer/DataAccessLayer.csproj" />
   <Project Path="Repositories/Repositories.csproj" />
-  <Project Path="Restaurant/WPF.csproj" />
+  <Project Path="Restaurant/Restaurant.csproj" />
   <Project Path="Services/Services.csproj" />
 </Solution>

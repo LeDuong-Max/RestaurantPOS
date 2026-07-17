@@ -1,15 +1,21 @@
-﻿using BusinessObject;
+using BusinessObject;
 using DataAccessLayer;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repositories
 {
-    public class FoodItemRepository : IFoodItemReposiitory
+    public class FoodItemRepository : IFoodItemRepository
     {
+        public List<FoodItem> GetFoodItems() => FoodItemDAO.GetFoodItems();
+        
+        public FoodItem GetFoodItemByID(int id) => FoodItemDAO.GetFoodItemByID(id);
+        
+        public void AddFoodItem(FoodItem foodItem) => FoodItemDAO.AddFoodItem(foodItem);
+        
+        public void UpdateFoodItem(FoodItem foodItem) => FoodItemDAO.UpdateFoodItem(foodItem);
+        
+        public void DeleteFoodItem(int id) => FoodItemDAO.DeleteFoodItem(id);
+
         public List<FoodItem> FilterFoodItem(int categoryId)
         {
             return FoodItemDAO.FilterFoodIitem(categoryId);

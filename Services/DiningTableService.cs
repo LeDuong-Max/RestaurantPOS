@@ -1,5 +1,6 @@
 using BusinessObject;
 using Repositories;
+using System.Collections.Generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +11,31 @@ namespace Services
 {
     public class DiningTableService : IDiningTableService
     {
-        private readonly IDiningTableRepository diningTableRepository;
+        private IDiningTableRepository repository;
+
         public DiningTableService()
         {
-            diningTableRepository = new DiningTableRepository();
+            repository = new DiningTableRepository();
         }
+
+        public List<DiningTable> GetDiningTables() => repository.GetDiningTables();
+
+        public DiningTable GetDiningTableByID(int id) => repository.GetDiningTableByID(id);
+
+        public void AddDiningTable(DiningTable table) => repository.AddDiningTable(table);
+
+        public void UpdateDiningTable(DiningTable table) => repository.UpdateDiningTable(table);
+
+        public void DeleteDiningTable(int id) => repository.DeleteDiningTable(id);
+
         public List<DiningTable>? GetAllDiningTable()
         {
-            return diningTableRepository.GetAllDiningTable();
+            return repository.GetAllDiningTable();
         }
 
         public void UpdateStatus(int tableID, int status)
         {
-            diningTableRepository.UpdateStatus(tableID, status);
+            repository.UpdateStatus(tableID, status);
         }
     }
 }
