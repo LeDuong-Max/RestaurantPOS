@@ -1,4 +1,4 @@
-using BusinessObject;
+﻿using BusinessObject;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -47,7 +47,7 @@ namespace Restaurant
         {
             if (string.IsNullOrWhiteSpace(txtCategoryId.Text) || string.IsNullOrWhiteSpace(txtCategoryName.Text))
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin ");
+                MessageBox.Show("Vui lÃ²ng Ä‘iá»n Ä‘áº§y Ä‘á»§ thÃ´ng tin ");
                 return;
             }
             Category tempCategory = new Category
@@ -64,7 +64,7 @@ namespace Restaurant
         {
             if (string.IsNullOrWhiteSpace(txtCategoryId.Text))
             {
-                MessageBox.Show("Hãy chọn danh mục mà bạn muốn sửa");
+                MessageBox.Show("HÃ£y chá»n danh má»¥c mÃ  báº¡n muá»‘n sá»­a");
                 return;
             }
             int categoryId = Int32.Parse(txtCategoryId.Text);

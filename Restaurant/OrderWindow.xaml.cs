@@ -1,10 +1,10 @@
-using BusinessObject; 
+﻿using BusinessObject; 
 using Services;      
 using System;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace WPF
+namespace Restaurant
 {
     public partial class OrderWindow : Window
     {
@@ -19,7 +19,7 @@ namespace WPF
         {
             InitializeComponent();
             currentTable = table;
-            txtTableName.Text = $"Hóa đơn - {currentTable.TableName}";
+            txtTableName.Text = $"HÃ³a Ä‘Æ¡n - {currentTable.TableName}";
             categoryService = new CategoryService();
             foodItemService = new FoodItemService();
             ingoutTableService = new DiningTableService();
@@ -39,13 +39,13 @@ namespace WPF
             try
             {
                 var listCategory = categoryService.GetAllCategory();
-                listCategory.Insert(0, new Category { CategoryId = 0, CategoryName = "--- Tất cả ---" });
+                listCategory.Insert(0, new Category { CategoryId = 0, CategoryName = "--- Táº¥t cáº£ ---" });
                 cboCategory.ItemsSource = listCategory;
                 cboCategory.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi tải category: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Lá»—i táº£i category: " + ex.Message, "Lá»—i", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void cboCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -76,7 +76,7 @@ namespace WPF
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi tải thực đơn: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Lá»—i táº£i thá»±c Ä‘Æ¡n: " + ex.Message, "Lá»—i", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -106,14 +106,14 @@ namespace WPF
             var displayList = orderDetailService.GetOrderDetailsDisplay(currentOrder.OrderId);
             dgOrderDetails.ItemsSource = displayList;
             decimal total = orderDetailService.CalculateOrderTotal(currentOrder.OrderId);
-            txtTotalPrice.Text = $"{total:N0} VNĐ";
+            txtTotalPrice.Text = $"{total:N0} VNÄ";
         }
         private void btnPayment_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var result = MessageBox.Show($"Bạn có chắc chắn muốn thanh toán hóa đơn cho {currentTable.TableName} không?", 
-                    "Xác nhận thanh toán", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var result = MessageBox.Show($"Báº¡n cÃ³ cháº¯c cháº¯n muá»‘n thanh toÃ¡n hÃ³a Ä‘Æ¡n cho {currentTable.TableName} khÃ´ng?", 
+                    "XÃ¡c nháº­n thanh toÃ¡n", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -124,13 +124,13 @@ namespace WPF
                     orderService.UpdateOrder(currentOrder);
                     ingoutTableService.UpdateStatus(currentTable.TableId, 0);
 
-                    MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Thanh toÃ¡n thÃ nh cÃ´ng!", "ThÃ´ng bÃ¡o", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi trong quá trình thanh toán: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Lá»—i trong quÃ¡ trÃ¬nh thanh toÃ¡n: {ex.Message}", "Lá»—i", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void btnFoodItem_Click(object sender, RoutedEventArgs e)

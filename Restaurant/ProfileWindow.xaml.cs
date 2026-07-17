@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace WPF
+namespace Restaurant
 {
     public partial class ProfileWindow : Window
     {

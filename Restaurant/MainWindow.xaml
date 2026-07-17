@@ -1,4 +1,4 @@
-<Window x:Class="Restaurant.MainWindow"
+﻿<Window x:Class="Restaurant.MainWindow"
         
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         
@@ -17,11 +17,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-10,0,0">
-            <Button x:Name="btnProfile" Content="Thông tin cá nhân" 
+            <Button x:Name="btnProfile" Content="ThÃ´ng tin cÃ¡ nhÃ¢n" 
                 Width="120" Height="30" Margin="0,0,10,0" 
                 Click="btnProfile_Click" 
                 Background="#4CAF50" Foreground="White" FontWeight="Bold" />
-            <Button x:Name="btnManagerAccount" Content="Quản lí tài khoản" 
+            <Button x:Name="btnManagerAccount" Content="Quáº£n lÃ­ tÃ i khoáº£n" 
                 Width="120" Height="30" Margin="0,0,10,0"
                 Click="btnManagerAccount_Click" 
                 Background="#2196F3" Foreground="White" FontWeight="Bold"/>
@@ -30,39 +30,39 @@
                 Width="120" Height="30" Margin="0,0,10,0"
                 Click="btnDiningTable_Click" 
                 Background="#2196F3" Foreground="White" FontWeight="Bold"/>
-            <Button x:Name="btnLogout" Content="Đăng xuất" 
+            <Button x:Name="btnLogout" Content="ÄÄƒng xuáº¥t" 
                 Width="100" Height="30" 
                 Click="btnLogout_Click" 
                 Background="#FF5722" Foreground="White" FontWeight="Bold"/>
         </StackPanel>
-        <TextBlock Grid.Row="0" Text="HỆ THỐNG QUẢN LÝ NHÀ HÀNG" FontSize="26" FontWeight="Bold" Foreground="#2C3E50" HorizontalAlignment="Center" Margin="0,30,0,30"/>
+        <TextBlock Grid.Row="0" Text="Há»† THá»NG QUáº¢N LÃ NHÃ€ HÃ€NG" FontSize="26" FontWeight="Bold" Foreground="#2C3E50" HorizontalAlignment="Center" Margin="0,30,0,30"/>
         <UniformGrid Grid.Row="1" Columns="2" Rows="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="600" Height="250">
-            <!-- Khu vực Bán hàng -->
+            <!-- Khu vá»±c BÃ¡n hÃ ng -->
             <Button x:Name="btnSales" Margin="10" Background="#E74C3C" Foreground="White" FontWeight="Bold" FontSize="18" Click="btnSales_Click">
                 <StackPanel>
-                    <TextBlock Text="🛒" FontSize="30" HorizontalAlignment="Center"/>
-                    <TextBlock Text="BÁN HÀNG" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    <TextBlock Text="ðŸ›’" FontSize="30" HorizontalAlignment="Center"/>
+                    <TextBlock Text="BÃN HÃ€NG" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                 </StackPanel>
             </Button>
-            <!-- Khu vực Quản lý Món ăn -->
+            <!-- Khu vá»±c Quáº£n lÃ½ MÃ³n Äƒn -->
             <Button x:Name="btnFoodItems" Margin="10" Background="#3498DB" Foreground="White" FontWeight="Bold" FontSize="18" Click="btnFoodItems_Click">
                 <StackPanel>
-                    <TextBlock Text="🍔" FontSize="30" HorizontalAlignment="Center"/>
-                    <TextBlock Text="QUẢN LÝ MÓN ĂN" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    <TextBlock Text="ðŸ”" FontSize="30" HorizontalAlignment="Center"/>
+                    <TextBlock Text="QUáº¢N LÃ MÃ“N Ä‚N" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                 </StackPanel>
             </Button>
-            <!-- Khu vực Quản lý Bàn ăn -->
+            <!-- Khu vá»±c Quáº£n lÃ½ BÃ n Äƒn -->
             <Button x:Name="btnDiningTables" Margin="10" Background="#9B59B6" Foreground="White" FontWeight="Bold" FontSize="18" Click="btnDiningTables_Click">
                 <StackPanel>
-                    <TextBlock Text="🍽️" FontSize="30" HorizontalAlignment="Center"/>
-                    <TextBlock Text="QUẢN LÝ BÀN ĂN" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    <TextBlock Text="ðŸ½ï¸" FontSize="30" HorizontalAlignment="Center"/>
+                    <TextBlock Text="QUáº¢N LÃ BÃ€N Ä‚N" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                 </StackPanel>
             </Button>
-            <!-- Khu vực Thống kê -->
+            <!-- Khu vá»±c Thá»‘ng kÃª -->
             <Button x:Name="btnReports" Margin="10" Background="#2ECC71" Foreground="White" FontWeight="Bold" FontSize="18" Click="btnReports_Click">
                 <StackPanel>
-                    <TextBlock Text="📈" FontSize="30" HorizontalAlignment="Center"/>
-                    <TextBlock Text="THỐNG KÊ DOANH THU" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    <TextBlock Text="ðŸ“ˆ" FontSize="30" HorizontalAlignment="Center"/>
+                    <TextBlock Text="THá»NG KÃŠ DOANH THU" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                 </StackPanel>
             </Button>
         </UniformGrid>

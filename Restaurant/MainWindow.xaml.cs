@@ -8,7 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPF;
+
 
 namespace Restaurant
 {
@@ -42,21 +42,25 @@ namespace Restaurant
 
         private void btnSales_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Tính năng Bán Hàng (Module 1) đang được phát triển!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            this.Hide();
+            DiningTableWindow posWindow = new DiningTableWindow();
+            posWindow.Owner = this;
+            posWindow.ShowDialog();
+            this.Show();
         }
 
         private void btnFoodItems_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide(); // Ẩn trang chủ đi
+            this.Hide(); // áº¨n trang chá»§ Ä‘i
             FoodItemWindow foodWindow = new FoodItemWindow();
             foodWindow.ShowDialog();
-            this.Show(); // Hiện lại trang chủ khi đóng cửa sổ con
+            this.Show(); // Hiá»‡n láº¡i trang chá»§ khi Ä‘Ã³ng cá»­a sá»• con
         }
 
         private void btnDiningTables_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            DiningTableWindow tableWindow = new DiningTableWindow();
+            ManageDiningTableWindow tableWindow = new ManageDiningTableWindow();
             tableWindow.ShowDialog();
             this.Show();
         }

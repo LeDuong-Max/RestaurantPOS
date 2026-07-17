@@ -1,0 +1,52 @@
+﻿<Window x:Class="Restaurant.ManageDiningTableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant"
+        mc:Ignorable="d"
+        Title="Quáº£n lÃ½ SÆ¡ Ä‘á»“ BÃ n Äƒn" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- BÃªn trÃ¡i: DataGrid -->
+        <DataGrid x:Name="dgTables" Grid.Column="0" AutoGenerateColumns="False" 
+                  SelectionChanged="dgTables_SelectionChanged" IsReadOnly="True" Margin="0,0,10,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="MÃ£ BÃ n" Binding="{Binding TableId}" Width="80"/>
+                <DataGridTextColumn Header="TÃªn BÃ n" Binding="{Binding TableName}" Width="*"/>
+                <DataGridTextColumn Header="Tráº¡ng ThÃ¡i" Binding="{Binding Status}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- BÃªn pháº£i: Form nháº­p liá»‡u -->
+        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+            <TextBlock Text="THÃ”NG TIN BÃ€N Ä‚N" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <TextBlock Text="MÃ£ bÃ n:" Margin="0,5,0,5"/>
+            <TextBox x:Name="txtTableId" IsReadOnly="True" Background="#EEEEEE" Height="30" VerticalContentAlignment="Center" Padding="5,0"/>
+
+            <TextBlock Text="TÃªn bÃ n (VD: BÃ n 1):" Margin="0,15,0,5"/>
+            <TextBox x:Name="txtTableName" Height="30" VerticalContentAlignment="Center" Padding="5,0"/>
+
+            <TextBlock Text="Tráº¡ng thÃ¡i:" Margin="0,15,0,5"/>
+            <ComboBox x:Name="cbStatus" Height="30" VerticalContentAlignment="Center" Padding="5,0">
+                <!-- GÃ¡n trá»±c tiáº¿p giÃ¡ trá»‹ vÃ o ComboBoxItem. Tag = giÃ¡ trá»‹ sá»‘ (0 hoáº·c 1) -->
+                <ComboBoxItem Content="Trá»‘ng" Tag="0"/>
+                <ComboBoxItem Content="Äang cÃ³ khÃ¡ch" Tag="1"/>
+            </ComboBox>
+
+            <WrapPanel HorizontalAlignment="Center" Margin="0,30,0,0">
+                <Button x:Name="btnAdd" Content="ThÃªm" Width="70" Height="35" Margin="5" Click="btnAdd_Click"/>
+                <Button x:Name="btnUpdate" Content="Sá»­a" Width="70" Height="35" Margin="5" Click="btnUpdate_Click"/>
+                <Button x:Name="btnDelete" Content="XÃ³a" Width="70" Height="35" Margin="5" Click="btnDelete_Click"/>
+            </WrapPanel>
+
+            <Button x:Name="btnClear" Content="LÃ m má»›i" Height="35" Margin="5,15,5,0" Click="btnClear_Click"/>
+            <Button x:Name="btnBack" Content="â¬… Quay láº¡i" Height="35" Margin="5,15,5,0" Click="btnBack_Click" Background="#7F8C8D" Foreground="White" FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
+</Window>

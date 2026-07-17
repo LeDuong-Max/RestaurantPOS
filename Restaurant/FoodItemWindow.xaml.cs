@@ -1,4 +1,4 @@
-using BusinessObject;
+﻿using BusinessObject;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace Restaurant
         public FoodItemWindow()
         {
             InitializeComponent();
-            LoadCategories(); // Phải load danh mục vào ComboBox trước
+            LoadCategories(); // Pháº£i load danh má»¥c vÃ o ComboBox trÆ°á»›c
             LoadFoodItems();
         }
 
@@ -33,7 +33,7 @@ namespace Restaurant
         {
             if (string.IsNullOrWhiteSpace(txtFoodName.Text) || string.IsNullOrWhiteSpace(txtPrice.Text) || cbCategory.SelectedValue == null)
             {
-                MessageBox.Show("Vui lòng điền đủ thông tin và chọn danh mục!", "Cảnh báo");
+                MessageBox.Show("Vui lÃ²ng Ä‘iá»n Ä‘á»§ thÃ´ng tin vÃ  chá»n danh má»¥c!", "Cáº£nh bÃ¡o");
                 return;
             }
 
@@ -48,13 +48,13 @@ namespace Restaurant
                 };
 
                 foodService.AddFoodItem(newItem);
-                MessageBox.Show("Thêm món ăn thành công!");
+                MessageBox.Show("ThÃªm mÃ³n Äƒn thÃ nh cÃ´ng!");
                 LoadFoodItems();
-                btnClear_Click(null, null); // Tự động làm mới ô nhập
+                btnClear_Click(null, null); // Tá»± Ä‘á»™ng lÃ m má»›i Ã´ nháº­p
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: Giá tiền phải là số hợp lệ. " + ex.Message, "Lỗi");
+                MessageBox.Show("Lá»—i: GiÃ¡ tiá»n pháº£i lÃ  sá»‘ há»£p lá»‡. " + ex.Message, "Lá»—i");
             }
         }
 
@@ -62,7 +62,7 @@ namespace Restaurant
         {
             if (string.IsNullOrWhiteSpace(txtFoodId.Text) || string.IsNullOrWhiteSpace(txtFoodName.Text) || string.IsNullOrWhiteSpace(txtPrice.Text) || cbCategory.SelectedValue == null)
             {
-                MessageBox.Show("Vui lòng chọn món ăn và điền đầy đủ thông tin!", "Cảnh báo");
+                MessageBox.Show("Vui lÃ²ng chá»n mÃ³n Äƒn vÃ  Ä‘iá»n Ä‘áº§y Ä‘á»§ thÃ´ng tin!", "Cáº£nh bÃ¡o");
                 return;
             }
 
@@ -78,12 +78,12 @@ namespace Restaurant
                 };
 
                 foodService.UpdateFoodItem(updateItem);
-                MessageBox.Show("Cập nhật thành công!");
+                MessageBox.Show("Cáº­p nháº­t thÃ nh cÃ´ng!");
                 LoadFoodItems();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: Giá tiền phải là số hợp lệ. " + ex.Message, "Lỗi");
+                MessageBox.Show("Lá»—i: GiÃ¡ tiá»n pháº£i lÃ  sá»‘ há»£p lá»‡. " + ex.Message, "Lá»—i");
             }
         }
 
@@ -91,15 +91,15 @@ namespace Restaurant
         {
             if (string.IsNullOrWhiteSpace(txtFoodId.Text))
             {
-                MessageBox.Show("Vui lòng chọn món ăn cần xóa!", "Cảnh báo");
+                MessageBox.Show("Vui lÃ²ng chá»n mÃ³n Äƒn cáº§n xÃ³a!", "Cáº£nh bÃ¡o");
                 return;
             }
 
-            MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa món này?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Báº¡n cÃ³ cháº¯c cháº¯n muá»‘n xÃ³a mÃ³n nÃ y?", "XÃ¡c nháº­n", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
                 foodService.DeleteFoodItem(int.Parse(txtFoodId.Text));
-                MessageBox.Show("Xóa thành công!");
+                MessageBox.Show("XÃ³a thÃ nh cÃ´ng!");
                 LoadFoodItems();
                 btnClear_Click(null, null);
             }
@@ -111,7 +111,7 @@ namespace Restaurant
             txtFoodName.Clear();
             txtPrice.Clear();
             cbCategory.SelectedItem = null;
-            chkIsAvailable.IsChecked = true; // Trả về mặc định
+            chkIsAvailable.IsChecked = true; // Tráº£ vá» máº·c Ä‘á»‹nh
             dgFoodItems.SelectedItem = null;
         }
 
@@ -126,8 +126,8 @@ namespace Restaurant
             {
                 txtFoodId.Text = selectedItem.FoodId.ToString();
                 txtFoodName.Text = selectedItem.FoodName;
-                txtPrice.Text = selectedItem.Price.ToString("0.##"); // Bỏ số 0 vô nghĩa ở đuôi
-                cbCategory.SelectedValue = selectedItem.CategoryId; // Tự động chọn đúng Danh mục trên ComboBox
+                txtPrice.Text = selectedItem.Price.ToString("0.##"); // Bá» sá»‘ 0 vÃ´ nghÄ©a á»Ÿ Ä‘uÃ´i
+                cbCategory.SelectedValue = selectedItem.CategoryId; // Tá»± Ä‘á»™ng chá»n Ä‘Ãºng Danh má»¥c trÃªn ComboBox
                 chkIsAvailable.IsChecked = selectedItem.IsAvailable;
             }
         }

@@ -1,4 +1,4 @@
-using BusinessObject;
+﻿using BusinessObject;
 using Microsoft.Win32;
 using Services;
 using System;
@@ -17,7 +17,7 @@ namespace Restaurant
         public ReportWindow()
         {
             InitializeComponent();
-            // Mặc định chọn thống kê 7 ngày gần nhất
+            // Máº·c Ä‘á»‹nh chá»n thá»‘ng kÃª 7 ngÃ y gáº§n nháº¥t
             dpFromDate.SelectedDate = DateTime.Today.AddDays(-7);
             dpToDate.SelectedDate = DateTime.Today;
             
@@ -33,7 +33,7 @@ namespace Restaurant
         {
             if (dpFromDate.SelectedDate == null || dpToDate.SelectedDate == null)
             {
-                MessageBox.Show("Vui lòng chọn khoảng thời gian hợp lệ!", "Cảnh báo");
+                MessageBox.Show("Vui lÃ²ng chá»n khoáº£ng thá»i gian há»£p lá»‡!", "Cáº£nh bÃ¡o");
                 return;
             }
 
@@ -42,19 +42,19 @@ namespace Restaurant
 
             if (fromDate > toDate)
             {
-                MessageBox.Show("Ngày bắt đầu không được lớn hơn ngày kết thúc!", "Cảnh báo");
+                MessageBox.Show("NgÃ y báº¯t Ä‘áº§u khÃ´ng Ä‘Æ°á»£c lá»›n hÆ¡n ngÃ y káº¿t thÃºc!", "Cáº£nh bÃ¡o");
                 return;
             }
 
-            // 1. Tải dữ liệu Doanh thu
+            // 1. Táº£i dá»¯ liá»‡u Doanh thu
             var revenueData = reportService.GetRevenueReport(fromDate, toDate);
             dgRevenue.ItemsSource = revenueData;
 
-            // Tính tổng tiền
+            // TÃ­nh tá»•ng tiá»n
             decimal total = revenueData.Sum(o => o.TotalPrice ?? 0);
-            txtTotalRevenue.Text = total.ToString("N0") + " VNĐ";
+            txtTotalRevenue.Text = total.ToString("N0") + " VNÄ";
 
-            // 2. Tải dữ liệu Top-sellers
+            // 2. Táº£i dá»¯ liá»‡u Top-sellers
             var topSellingData = reportService.GetTopSellingFoods(fromDate, toDate);
             dgTopSelling.ItemsSource = topSellingData;
         }
@@ -65,15 +65,15 @@ namespace Restaurant
             {
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Filter = "CSV File|*.csv";
-                sfd.Title = "Lưu báo cáo thống kê";
+                sfd.Title = "LÆ°u bÃ¡o cÃ¡o thá»‘ng kÃª";
                 sfd.FileName = "BaoCaoThongKe_" + DateTime.Now.ToString("ddMMyyyy");
 
                 if (sfd.ShowDialog() == true)
                 {
-                    // Hỗ trợ hiển thị Tiếng Việt có dấu khi mở bằng Excel
+                    // Há»— trá»£ hiá»ƒn thá»‹ Tiáº¿ng Viá»‡t cÃ³ dáº¥u khi má»Ÿ báº±ng Excel
                     StringBuilder csv = new StringBuilder();
                     
-                    // Kiểm tra xem người dùng đang đứng ở Tab nào để xuất dữ liệu tab đó
+                    // Kiá»ƒm tra xem ngÆ°á»i dÃ¹ng Ä‘ang Ä‘á»©ng á»Ÿ Tab nÃ o Ä‘á»ƒ xuáº¥t dá»¯ liá»‡u tab Ä‘Ã³
                     if (tabMain.SelectedIndex == 0) 
                     {
                         // Tab Doanh thu
@@ -90,7 +90,7 @@ namespace Restaurant
                     }
                     else 
                     {
-                        // Tab Món bán chạy
+                        // Tab MÃ³n bÃ¡n cháº¡y
                         csv.AppendLine("Ma Mon,Ten Mon An,So Luong Da Ban,Tong Tien Thu Ve");
                         var data = dgTopSelling.ItemsSource as List<TopSellingFoodDTO>;
                         if (data != null)
@@ -102,14 +102,14 @@ namespace Restaurant
                         }
                     }
 
-                    // WriteAllText với UTF8 BOM để Excel có thể đọc được tiếng Việt
+                    // WriteAllText vá»›i UTF8 BOM Ä‘á»ƒ Excel cÃ³ thá»ƒ Ä‘á»c Ä‘Æ°á»£c tiáº¿ng Viá»‡t
                     File.WriteAllText(sfd.FileName, csv.ToString(), Encoding.UTF8);
-                    MessageBox.Show("Xuất file báo cáo thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Xuáº¥t file bÃ¡o cÃ¡o thÃ nh cÃ´ng!", "ThÃ´ng bÃ¡o", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi xuất file: " + ex.Message, "Lỗi");
+                MessageBox.Show("Lá»—i khi xuáº¥t file: " + ex.Message, "Lá»—i");
             }
         }
 

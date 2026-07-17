@@ -1,7 +1,7 @@
-<Window x:Class="Restaurant.ReportWindow"
+﻿<Window x:Class="Restaurant.ReportWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Thống Kê &amp; Báo Cáo Doanh Thu" Height="600" Width="900" WindowStartupLocation="CenterScreen">
+        Title="Thá»‘ng KÃª &amp; BÃ¡o CÃ¡o Doanh Thu" Height="600" Width="900" WindowStartupLocation="CenterScreen">
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -9,21 +9,21 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Phần Lọc Ngày -->
+        <!-- Pháº§n Lá»c NgÃ y -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,15">
-            <TextBlock Text="Từ ngày:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBlock Text="Tá»« ngÃ y:" VerticalAlignment="Center" Margin="0,0,10,0"/>
             <DatePicker x:Name="dpFromDate" Width="120"/>
             
-            <TextBlock Text="Đến ngày:" VerticalAlignment="Center" Margin="20,0,10,0"/>
+            <TextBlock Text="Äáº¿n ngÃ y:" VerticalAlignment="Center" Margin="20,0,10,0"/>
             <DatePicker x:Name="dpToDate" Width="120"/>
             
-            <Button x:Name="btnFilter" Content="Lọc Dữ Liệu" Width="100" Margin="20,0,0,0" Padding="5" Click="btnFilter_Click" Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
+            <Button x:Name="btnFilter" Content="Lá»c Dá»¯ Liá»‡u" Width="100" Margin="20,0,0,0" Padding="5" Click="btnFilter_Click" Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
         </StackPanel>
 
-        <!-- Nội dung chính (2 Tabs) -->
+        <!-- Ná»™i dung chÃ­nh (2 Tabs) -->
         <TabControl x:Name="tabMain" Grid.Row="1">
             <!-- Tab 1: Doanh Thu -->
-            <TabItem Header="Báo Cáo Doanh Thu">
+            <TabItem Header="BÃ¡o CÃ¡o Doanh Thu">
                 <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -32,32 +32,32 @@
 
                     <DataGrid x:Name="dgRevenue" Grid.Row="0" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,0,0,10">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Mã HĐ" Binding="{Binding OrderId}" Width="80"/>
-                            <DataGridTextColumn Header="Bàn" Binding="{Binding Table.TableName}" Width="100"/>
-                            <DataGridTextColumn Header="Thu ngân" Binding="{Binding Account.FullName}" Width="150"/>
-                            <DataGridTextColumn Header="Giờ vào" Binding="{Binding OrderDate, StringFormat=dd/MM/yyyy HH:mm}" Width="150"/>
-                            <DataGridTextColumn Header="Giờ ra (Thanh toán)" Binding="{Binding CheckoutDate, StringFormat=dd/MM/yyyy HH:mm}" Width="150"/>
-                            <DataGridTextColumn Header="Giảm giá" Binding="{Binding Discount}" Width="100"/>
-                            <DataGridTextColumn Header="Thành tiền" Binding="{Binding TotalPrice}" Width="150"/>
+                            <DataGridTextColumn Header="MÃ£ HÄ" Binding="{Binding OrderId}" Width="80"/>
+                            <DataGridTextColumn Header="BÃ n" Binding="{Binding Table.TableName}" Width="100"/>
+                            <DataGridTextColumn Header="Thu ngÃ¢n" Binding="{Binding Account.FullName}" Width="150"/>
+                            <DataGridTextColumn Header="Giá» vÃ o" Binding="{Binding OrderDate, StringFormat=dd/MM/yyyy HH:mm}" Width="150"/>
+                            <DataGridTextColumn Header="Giá» ra (Thanh toÃ¡n)" Binding="{Binding CheckoutDate, StringFormat=dd/MM/yyyy HH:mm}" Width="150"/>
+                            <DataGridTextColumn Header="Giáº£m giÃ¡" Binding="{Binding Discount}" Width="100"/>
+                            <DataGridTextColumn Header="ThÃ nh tiá»n" Binding="{Binding TotalPrice}" Width="150"/>
                         </DataGrid.Columns>
                     </DataGrid>
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <TextBlock Text="TỔNG DOANH THU:" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                        <TextBlock x:Name="txtTotalRevenue" Text="0 VNĐ" FontSize="20" FontWeight="Bold" Foreground="Red" VerticalAlignment="Center"/>
+                        <TextBlock Text="Tá»”NG DOANH THU:" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="txtTotalRevenue" Text="0 VNÄ" FontSize="20" FontWeight="Bold" Foreground="Red" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
 
-            <!-- Tab 2: Món Ăn Bán Chạy -->
-            <TabItem Header="Món Ăn Bán Chạy (Top-sellers)">
+            <!-- Tab 2: MÃ³n Ä‚n BÃ¡n Cháº¡y -->
+            <TabItem Header="MÃ³n Ä‚n BÃ¡n Cháº¡y (Top-sellers)">
                 <Grid Margin="10">
                     <DataGrid x:Name="dgTopSelling" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Mã Món" Binding="{Binding FoodId}" Width="100"/>
-                            <DataGridTextColumn Header="Tên Món Ăn" Binding="{Binding FoodName}" Width="*"/>
-                            <DataGridTextColumn Header="Số Lượng Đã Bán" Binding="{Binding TotalQuantitySold}" Width="150"/>
-                            <DataGridTextColumn Header="Tổng Tiền Thu Về" Binding="{Binding TotalRevenue}" Width="200"/>
+                            <DataGridTextColumn Header="MÃ£ MÃ³n" Binding="{Binding FoodId}" Width="100"/>
+                            <DataGridTextColumn Header="TÃªn MÃ³n Ä‚n" Binding="{Binding FoodName}" Width="*"/>
+                            <DataGridTextColumn Header="Sá»‘ LÆ°á»£ng ÄÃ£ BÃ¡n" Binding="{Binding TotalQuantitySold}" Width="150"/>
+                            <DataGridTextColumn Header="Tá»•ng Tiá»n Thu Vá»" Binding="{Binding TotalRevenue}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -65,11 +65,11 @@
         </TabControl>
 
         <Grid Grid.Row="2" Margin="0,15,0,0">
-            <!-- Nút Quay lại -->
-            <Button x:Name="btnBack" Content="⬅ Quay lại Trang chủ" Width="180" Height="40" HorizontalAlignment="Left" Click="btnBack_Click" Background="#7F8C8D" Foreground="White" FontWeight="Bold"/>
+            <!-- NÃºt Quay láº¡i -->
+            <Button x:Name="btnBack" Content="â¬… Quay láº¡i Trang chá»§" Width="180" Height="40" HorizontalAlignment="Left" Click="btnBack_Click" Background="#7F8C8D" Foreground="White" FontWeight="Bold"/>
             
-            <!-- Xuất Báo Cáo -->
-            <Button x:Name="btnExportCsv" Content="Xuất ra Excel (CSV)" Width="150" Height="40" HorizontalAlignment="Right" Click="btnExportCsv_Click" Background="#2196F3" Foreground="White" FontWeight="Bold"/>
+            <!-- Xuáº¥t BÃ¡o CÃ¡o -->
+            <Button x:Name="btnExportCsv" Content="Xuáº¥t ra Excel (CSV)" Width="150" Height="40" HorizontalAlignment="Right" Click="btnExportCsv_Click" Background="#2196F3" Foreground="White" FontWeight="Bold"/>
         </Grid>
     </Grid>
 </Window>

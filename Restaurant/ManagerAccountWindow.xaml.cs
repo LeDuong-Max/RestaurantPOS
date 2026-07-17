@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using BusinessObject;
 using Services;
 
-namespace WPF
+namespace Restaurant
 {
     public partial class ManagerAccountWindow : Window
     {
@@ -28,7 +28,7 @@ namespace WPF
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Lá»—i táº£i dá»¯ liá»‡u: " + ex.Message, "Lá»—i", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void dgAccounts_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -64,7 +64,7 @@ namespace WPF
             {
                 if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Password))
                 {
-                    MessageBox.Show("Vui lòng nhập đủ Username và Password!", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Vui lÃ²ng nháº­p Ä‘á»§ Username vÃ  Password!", "Cáº£nh bÃ¡o", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
@@ -79,13 +79,13 @@ namespace WPF
                 };
                 accountService.CreateAccount(newAcc);
 
-                MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("ThÃªm tÃ i khoáº£n thÃ nh cÃ´ng!", "ThÃ´ng bÃ¡o", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadData();
                 btnClear_Click(this, new RoutedEventArgs());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi thêm mới (Có thể trùng Username): " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Lá»—i thÃªm má»›i (CÃ³ thá»ƒ trÃ¹ng Username): " + ex.Message, "Lá»—i", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -93,7 +93,7 @@ namespace WPF
         {
             if (dgAccounts.SelectedItem is not Account selectedAcc)
             {
-                MessageBox.Show("Vui lòng chọn một tài khoản từ danh sách để cập nhật!", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Vui lÃ²ng chá»n má»™t tÃ i khoáº£n tá»« danh sÃ¡ch Ä‘á»ƒ cáº­p nháº­t!", "Cáº£nh bÃ¡o", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             try
@@ -112,12 +112,12 @@ namespace WPF
 
                 accountService.UpdateAccount(selectedAcc);
 
-                MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Cáº­p nháº­t thÃ nh cÃ´ng!", "ThÃ´ng bÃ¡o", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadData();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi cập nhật: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Lá»—i cáº­p nháº­t: " + ex.Message, "Lá»—i", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -125,12 +125,12 @@ namespace WPF
         {
             if (dgAccounts.SelectedItem is not Account selectedAcc)
             {
-                MessageBox.Show("Vui lòng chọn một tài khoản để Khóa/Mở!", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Vui lÃ²ng chá»n má»™t tÃ i khoáº£n Ä‘á»ƒ KhÃ³a/Má»Ÿ!", "Cáº£nh bÃ¡o", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            var confirm = MessageBox.Show($"Bạn có chắc muốn thay đổi trạng thái của tài khoản {selectedAcc.Username}?",
-                                          "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var confirm = MessageBox.Show($"Báº¡n cÃ³ cháº¯c muá»‘n thay Ä‘á»•i tráº¡ng thÃ¡i cá»§a tÃ i khoáº£n {selectedAcc.Username}?",
+                                          "XÃ¡c nháº­n", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (confirm == MessageBoxResult.Yes)
             {
@@ -139,15 +139,15 @@ namespace WPF
                     selectedAcc.Status = (selectedAcc.Status == 1) ? 0 : 1;
                     accountService.UpdateAccount(selectedAcc);
 
-                    string mess = selectedAcc.Status == 1 ? "Đã MỞ KHÓA tài khoản!" : "Đã KHÓA tài khoản!";
-                    MessageBox.Show(mess, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    string mess = selectedAcc.Status == 1 ? "ÄÃ£ Má»ž KHÃ“A tÃ i khoáº£n!" : "ÄÃ£ KHÃ“A tÃ i khoáº£n!";
+                    MessageBox.Show(mess, "ThÃ´ng bÃ¡o", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     LoadData();
                     btnClear_Click(this, new RoutedEventArgs());
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi khi đổi trạng thái: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Lá»—i khi Ä‘á»•i tráº¡ng thÃ¡i: " + ex.Message, "Lá»—i", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

@@ -1,9 +1,9 @@
-using Restaurant;
+﻿using Restaurant;
 using Services;
 using System.Windows;
 using BusinessObject;
 
-namespace WPF
+namespace Restaurant
 {
     /// <summary>
     /// Interaction logic for Login.xaml
@@ -25,7 +25,7 @@ namespace WPF
 
                 if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
                 {
-                    MessageBox.Show("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.");
+                    MessageBox.Show("Vui lÃ²ng nháº­p Ä‘áº§y Ä‘á»§ tÃªn Ä‘Äƒng nháº­p vÃ  máº­t kháº©u.");
                     return;
                 }
 
@@ -42,17 +42,17 @@ namespace WPF
                 {
                     if (account != null && account.Status == 0)
                     {
-                        MessageBox.Show("Bạn không còn quyền đăng nhập!");
+                        MessageBox.Show("Báº¡n khÃ´ng cÃ²n quyá»n Ä‘Äƒng nháº­p!");
                     }
                     else
                     {
-                        MessageBox.Show("Sai tài khoản hoặc mật khẩu.");
+                        MessageBox.Show("Sai tÃ i khoáº£n hoáº·c máº­t kháº©u.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi kết nối cơ sở dữ liệu hoặc hệ thống:\n{ex.Message}");
+                MessageBox.Show($"Lá»—i káº¿t ná»‘i cÆ¡ sá»Ÿ dá»¯ liá»‡u hoáº·c há»‡ thá»‘ng:\n{ex.Message}");
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿using BusinessObject;
 
-namespace WPF
+namespace Restaurant
 {
     public static class AppSession
     {
