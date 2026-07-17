@@ -40,7 +40,10 @@ namespace Restaurant
 
         private void btnSales_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Tính năng Bán Hàng (Module 1) đang được phát triển!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            this.Hide();
+            SaleWindow saleWindow = new SaleWindow();
+            saleWindow.ShowDialog();
+            this.Show();
         }
 
         private void btnFoodItems_Click(object sender, RoutedEventArgs e)

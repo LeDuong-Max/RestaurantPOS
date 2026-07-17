@@ -15,7 +15,6 @@ public partial class OrderDetail
 
     public decimal UnitPrice { get; set; }
 
-    public string? Notes { get; set; }
 
     public virtual FoodItem Food { get; set; } = null!;
 
