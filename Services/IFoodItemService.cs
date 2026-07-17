@@ -1,0 +1,16 @@
+﻿using BusinessObject;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Services
+{
+    public interface IFoodItemService
+    {
+        List<FoodItem> ShowAllFoodItem();
+        List<FoodItem> FilterFoodIitem(int categoryId);
+        FoodItem GetFoodById(int foodID);
+    }
+}
