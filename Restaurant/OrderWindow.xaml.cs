@@ -120,6 +120,7 @@ namespace WPF
                     decimal total = orderDetailService.CalculateOrderTotal(currentOrder.OrderId);
                     currentOrder.TotalPrice = total;
                     currentOrder.Status = 1;
+                    currentOrder.CheckoutDate = DateTime.Now;
 
                     orderService.UpdateOrder(currentOrder);
                     ingoutTableService.UpdateStatus(currentTable.TableId, 0);
