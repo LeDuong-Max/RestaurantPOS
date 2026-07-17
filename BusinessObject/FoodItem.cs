@@ -13,7 +13,11 @@ public partial class FoodItem
 
     public int CategoryId { get; set; }
 
+
     public bool IsAvailable { get; set; } = true;
+
+    public string? Img {  get; set; }
+
 
     public virtual Category Category { get; set; } = null!;
 

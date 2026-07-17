@@ -1,6 +1,13 @@
 using BusinessObject;
 using Repositories;
 using System.Collections.Generic;
+using BusinessObject;
+using Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Services
 {
@@ -22,5 +29,18 @@ namespace Services
         public void UpdateFoodItem(FoodItem foodItem) => repository.UpdateFoodItem(foodItem);
 
         public void DeleteFoodItem(int id) => repository.DeleteFoodItem(id);
+
+        public List<FoodItem> FilterFoodIitem(int categoryId)
+        {
+            return repository.FilterFoodItem(categoryId);
+        }
+        public FoodItem GetFoodById(int foodID)
+        {
+            return repository.GetFoodById(foodID);
+        }
+        public List<FoodItem> ShowAllFoodItem()
+        {
+            return repository.ShowAllFoodItem();
+        }
     }
 }

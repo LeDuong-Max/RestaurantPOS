@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using BusinessObject;
 
-namespace BusinessObject;
+namespace DataAccessLayer;
 
 public partial class RestaurantPosContext : DbContext
 {
@@ -27,9 +28,11 @@ public partial class RestaurantPosContext : DbContext
 
     public virtual DbSet<OrderDetail> OrderDetails { get; set; }
 
+    public virtual DbSet<Role> Roles { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=(local); Database=RestaurantPOS; Uid=sa; Pwd=123; TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=(local);Database=RestaurantPOS;Uid=sa;Pwd=123;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -42,10 +45,17 @@ public partial class RestaurantPosContext : DbContext
             entity.HasIndex(e => e.Username, "UQ__Account__536C85E4C470F4F2").IsUnique();
 
             entity.Property(e => e.AccountId).HasColumnName("AccountID");
+            entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.FullName).HasMaxLength(100);
             entity.Property(e => e.Password).HasMaxLength(100);
             entity.Property(e => e.Role).HasDefaultValue(3);
+            entity.Property(e => e.Status).HasDefaultValue(1);
             entity.Property(e => e.Username).HasMaxLength(50);
+
+            entity.HasOne(d => d.RoleNavigation).WithMany(p => p.Accounts)
+                .HasForeignKey(d => d.Role)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Account_Role");
         });
 
         modelBuilder.Entity<Category>(entity =>
@@ -131,6 +141,18 @@ public partial class RestaurantPosContext : DbContext
                 .HasForeignKey(d => d.OrderId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Detail_Order");
+        });
+
+        modelBuilder.Entity<Role>(entity =>
+        {
+            entity.HasKey(e => e.RoleId).HasName("PK__Role__8AFACE3A0C61D9E4");
+
+            entity.ToTable("Role");
+
+            entity.Property(e => e.RoleId)
+                .ValueGeneratedNever()
+                .HasColumnName("RoleID");
+            entity.Property(e => e.RoleName).HasMaxLength(50);
         });
 
         OnModelCreatingPartial(modelBuilder);

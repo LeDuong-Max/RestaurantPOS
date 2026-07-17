@@ -10,5 +10,8 @@ namespace Repositories
         void AddFoodItem(FoodItem foodItem);
         void UpdateFoodItem(FoodItem foodItem);
         void DeleteFoodItem(int id);
+        List<FoodItem> FilterFoodItem(int categoryId);
+        FoodItem GetFoodById(int foodID);
+        List<FoodItem> ShowAllFoodItem();
     }
 }

@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
@@ -11,7 +13,7 @@ namespace DataAccessLayer
         public static List<FoodItem> GetFoodItems()
         {
             using var context = new RestaurantPosContext();
-            // Include Category để load cả thông tin tên danh mục hiển thị lên DataGrid
+            // Include Category Ä‘á»ƒ load cáº£ thÃ´ng tin tÃªn danh má»¥c hiá»ƒn thá»‹ lÃªn DataGrid
             return context.FoodItems.Include(f => f.Category).ToList();
         }
 
@@ -51,6 +53,21 @@ namespace DataAccessLayer
                 context.FoodItems.Remove(foodItem);
                 context.SaveChanges();
             }
+        }
+        public static List<FoodItem> ShowAllFoodItem()
+        {
+            using var db = new RestaurantPosContext();
+            return db.FoodItems.ToList();
+        }
+        public static List<FoodItem> FilterFoodIitem(int categoryId)
+        {
+            using var db = new RestaurantPosContext();
+            return db.FoodItems.Where(a=>a.CategoryId == categoryId).ToList();
+        }
+        public static FoodItem GetFoodById(int foodId)
+        {
+            using var db = new RestaurantPosContext();
+            return db.FoodItems.FirstOrDefault(f => f.FoodId == foodId);
         }
     }
 }

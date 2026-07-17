@@ -15,5 +15,18 @@ namespace Repositories
         public void UpdateFoodItem(FoodItem foodItem) => FoodItemDAO.UpdateFoodItem(foodItem);
         
         public void DeleteFoodItem(int id) => FoodItemDAO.DeleteFoodItem(id);
+
+        public List<FoodItem> FilterFoodItem(int categoryId)
+        {
+            return FoodItemDAO.FilterFoodIitem(categoryId);
+        }
+        public FoodItem GetFoodById(int foodID)
+        {
+            return FoodItemDAO.GetFoodById(foodID);
+        }
+        public List<FoodItem> ShowAllFoodItem()
+        {
+            return FoodItemDAO.ShowAllFoodItem();
+        }
     }
 }

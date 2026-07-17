@@ -1,6 +1,11 @@
 using BusinessObject;
 using Repositories;
 using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Services
 {
@@ -22,5 +27,15 @@ namespace Services
         public void UpdateDiningTable(DiningTable table) => repository.UpdateDiningTable(table);
 
         public void DeleteDiningTable(int id) => repository.DeleteDiningTable(id);
+
+        public List<DiningTable>? GetAllDiningTable()
+        {
+            return repository.GetAllDiningTable();
+        }
+
+        public void UpdateStatus(int tableID, int status)
+        {
+            repository.UpdateStatus(tableID, status);
+        }
     }
 }

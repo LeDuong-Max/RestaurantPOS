@@ -1,4 +1,4 @@
-﻿using BusinessObject;
+using BusinessObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +41,11 @@ namespace DataAccessLayer
             using var categories = new RestaurantPosContext();
             categories.Categories.Add(category);
             categories.SaveChanges();
+        }
+        public static List<Category> GetAllCategory()
+        {
+            using var db = new RestaurantPosContext();
+            return db.Categories.ToList();
         }
     }
 }

@@ -10,5 +10,8 @@ namespace Services
         void AddFoodItem(FoodItem foodItem);
         void UpdateFoodItem(FoodItem foodItem);
         void DeleteFoodItem(int id);
+        List<FoodItem> ShowAllFoodItem();
+        List<FoodItem> FilterFoodIitem(int categoryId);
+        FoodItem GetFoodById(int foodID);
     }
 }
