@@ -16,7 +16,6 @@ public partial class Account
     public int Role { get; set; }
 
 
-    public bool IsActive { get; set; } = true;
 
     public string? Email { get; set; }
 

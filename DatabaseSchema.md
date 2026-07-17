@@ -24,7 +24,6 @@ CREATE TABLE Account (
     Password NVARCHAR(100) NOT NULL,
     FullName NVARCHAR(100) NOT NULL,
     Role INT NOT NULL DEFAULT 3, -- 1: Admin, 2: Thu ngân, 3: Phục vụ
-    IsActive BIT NOT NULL DEFAULT 1,
     Email NVARCHAR(100) NULL,
     Status INT NOT NULL DEFAULT 1,
     CONSTRAINT FK_Account_Role FOREIGN KEY (Role) REFERENCES Role(RoleID)
