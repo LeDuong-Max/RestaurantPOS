@@ -10,6 +10,11 @@ namespace Repositories
 {
     public class CategoriesRepository : ICategoriesRepository
     {
+        public void AddCategory(Category category)
+        {
+            CategoryDAO.AddCategory(category);
+        }
+
         public void DeleteCategoryByID(int id)
         {
             CategoryDAO.DeleteCategoryByID(id);
@@ -29,5 +34,6 @@ namespace Repositories
         {
             CategoryDAO.UpdateCategoryByID(category);
         }
+
     }
 }

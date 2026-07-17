@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace BusinessObject;
@@ -14,6 +14,8 @@ public partial class Account
     public string FullName { get; set; } = null!;
 
     public int Role { get; set; }
+
+    public bool IsActive { get; set; } = true;
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }

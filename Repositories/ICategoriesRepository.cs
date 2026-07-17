@@ -13,5 +13,6 @@ namespace Repositories
         Category GetCategory(int id);
         void UpdateCategoryByID(Category category);
         void DeleteCategoryByID(int id);
+        void AddCategory(Category category);
     }
 }

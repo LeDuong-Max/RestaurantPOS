@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace BusinessObject;
@@ -12,6 +12,8 @@ public partial class FoodItem
     public decimal Price { get; set; }
 
     public int CategoryId { get; set; }
+
+    public bool IsAvailable { get; set; } = true;
 
     public virtual Category Category { get; set; } = null!;
 

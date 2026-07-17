@@ -1,0 +1,56 @@
+using BusinessObject;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace DataAccessLayer
+{
+    public class FoodItemDAO
+    {
+        public static List<FoodItem> GetFoodItems()
+        {
+            using var context = new RestaurantPosContext();
+            // Include Category để load cả thông tin tên danh mục hiển thị lên DataGrid
+            return context.FoodItems.Include(f => f.Category).ToList();
+        }
+
+        public static FoodItem GetFoodItemByID(int id)
+        {
+            using var context = new RestaurantPosContext();
+            return context.FoodItems.FirstOrDefault(f => f.FoodId == id);
+        }
+
+        public static void AddFoodItem(FoodItem foodItem)
+        {
+            using var context = new RestaurantPosContext();
+            context.FoodItems.Add(foodItem);
+            context.SaveChanges();
+        }
+
+        public static void UpdateFoodItem(FoodItem foodItem)
+        {
+            using var context = new RestaurantPosContext();
+            var existingFood = context.FoodItems.FirstOrDefault(f => f.FoodId == foodItem.FoodId);
+            if (existingFood != null)
+            {
+                existingFood.FoodName = foodItem.FoodName;
+                existingFood.Price = foodItem.Price;
+                existingFood.CategoryId = foodItem.CategoryId;
+                existingFood.IsAvailable = foodItem.IsAvailable;
+                context.SaveChanges();
+            }
+        }
+
+        public static void DeleteFoodItem(int id)
+        {
+            using var context = new RestaurantPosContext();
+            var foodItem = context.FoodItems.FirstOrDefault(f => f.FoodId == id);
+            if (foodItem != null)
+            {
+                context.FoodItems.Remove(foodItem);
+                context.SaveChanges();
+            }
+        }
+    }
+}

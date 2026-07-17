@@ -24,7 +24,7 @@ namespace DataAccessLayer
         public static void UpdateCategoryByID(Category category)
         {
             using var categories = new RestaurantPosContext();
-            categories.Entry(categories).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            categories.Entry(category).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             categories.SaveChanges();
         }
 
@@ -33,6 +33,13 @@ namespace DataAccessLayer
             using var categories = new RestaurantPosContext();
             var category = categories.Categories.SingleOrDefault(c => c.CategoryId == id);
             categories.Remove(category);
+            categories.SaveChanges();
+        }
+
+        public static void AddCategory(Category category)
+        {
+            using var categories = new RestaurantPosContext();
+            categories.Categories.Add(category);
             categories.SaveChanges();
         }
     }

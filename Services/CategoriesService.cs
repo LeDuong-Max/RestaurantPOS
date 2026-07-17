@@ -12,6 +12,12 @@ namespace Services
     public class CategoriesService : ICategoriesService
     {
         private ICategoriesRepository categories = new CategoriesRepository();
+
+        public void AddCategory(Category category)
+        {
+            categories.AddCategory(category);
+        }
+
         public void DeleteCategoryByID(int id)
         {
             categories.DeleteCategoryByID(id);

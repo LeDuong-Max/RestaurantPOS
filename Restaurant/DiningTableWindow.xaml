@@ -1,0 +1,52 @@
+<Window x:Class="Restaurant.DiningTableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant"
+        mc:Ignorable="d"
+        Title="Quản lý Sơ đồ Bàn ăn" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Bên trái: DataGrid -->
+        <DataGrid x:Name="dgTables" Grid.Column="0" AutoGenerateColumns="False" 
+                  SelectionChanged="dgTables_SelectionChanged" IsReadOnly="True" Margin="0,0,10,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã Bàn" Binding="{Binding TableId}" Width="80"/>
+                <DataGridTextColumn Header="Tên Bàn" Binding="{Binding TableName}" Width="*"/>
+                <DataGridTextColumn Header="Trạng Thái" Binding="{Binding Status}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Bên phải: Form nhập liệu -->
+        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+            <TextBlock Text="THÔNG TIN BÀN ĂN" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <TextBlock Text="Mã bàn:" Margin="0,5,0,5"/>
+            <TextBox x:Name="txtTableId" IsReadOnly="True" Background="#EEEEEE" Height="30" VerticalContentAlignment="Center" Padding="5,0"/>
+
+            <TextBlock Text="Tên bàn (VD: Bàn 1):" Margin="0,15,0,5"/>
+            <TextBox x:Name="txtTableName" Height="30" VerticalContentAlignment="Center" Padding="5,0"/>
+
+            <TextBlock Text="Trạng thái:" Margin="0,15,0,5"/>
+            <ComboBox x:Name="cbStatus" Height="30" VerticalContentAlignment="Center" Padding="5,0">
+                <!-- Gán trực tiếp giá trị vào ComboBoxItem. Tag = giá trị số (0 hoặc 1) -->
+                <ComboBoxItem Content="Trống" Tag="0"/>
+                <ComboBoxItem Content="Đang có khách" Tag="1"/>
+            </ComboBox>
+
+            <WrapPanel HorizontalAlignment="Center" Margin="0,30,0,0">
+                <Button x:Name="btnAdd" Content="Thêm" Width="70" Height="35" Margin="5" Click="btnAdd_Click"/>
+                <Button x:Name="btnUpdate" Content="Sửa" Width="70" Height="35" Margin="5" Click="btnUpdate_Click"/>
+                <Button x:Name="btnDelete" Content="Xóa" Width="70" Height="35" Margin="5" Click="btnDelete_Click"/>
+            </WrapPanel>
+
+            <Button x:Name="btnClear" Content="Làm mới" Height="35" Margin="5,15,5,0" Click="btnClear_Click"/>
+            <Button x:Name="btnBack" Content="⬅ Quay lại" Height="35" Margin="5,15,5,0" Click="btnBack_Click" Background="#7F8C8D" Foreground="White" FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
+</Window>
